@@ -27,12 +27,29 @@
     button:hover {
         background-color: #45a049;
     }
+    #copySuccess {
+        color: green;
+        display: none;
+    }
 </style>
 <script>
 function convertToSingleLine() {
     var inputText = document.getElementById("inputText").value;
     var singleLineText = inputText.replace(/\n/g, "\\n");
     document.getElementById("outputText").value = singleLineText;
+}
+
+function copyToClipboard() {
+    var copyText = document.getElementById("outputText");
+    copyText.select();
+    document.execCommand("copy");
+
+    // Show copy success message
+    var successMsg = document.getElementById("copySuccess");
+    successMsg.style.display = "block";
+    setTimeout(function() {
+        successMsg.style.display = "none";
+    }, 2000); // Hide after 2 seconds
 }
 </script>
 </head>
@@ -42,6 +59,7 @@ function convertToSingleLine() {
     <textarea id="inputText" rows="10" placeholder="Enter multiline text here..."></textarea><br>
     <button onclick="convertToSingleLine()">Convert</button><br><br>
     
-    <textarea id="outputText" rows="10" placeholder="Single line output will appear here..."></textarea>
+    <textarea id="outputText" rows="10" placeholder="Click here to copy the output..." onclick="copyToClipboard()"></textarea>
+    <div id="copySuccess">Copied to clipboard!</div>
 </body>
 </html>
