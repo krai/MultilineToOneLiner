@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Multiline to Single Line Converter</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        padding: 20px;
+        text-align: center;
+    }
+    textarea {
+        width: 80%;
+        margin: 10px 0;
+        padding: 10px;
+    }
+    button {
+        padding: 10px 15px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #45a049;
+    }
+</style>
+<script>
+function convertToSingleLine() {
+    var inputText = document.getElementById("inputText").value;
+    var singleLineText = inputText.replace(/\n/g, "\\n");
+    document.getElementById("outputText").value = singleLineText;
+}
+</script>
+</head>
+<body>
+    <h2>Multiline to Single Line Converter</h2>
+    
+    <textarea id="inputText" rows="10" placeholder="Enter multiline text here..."></textarea><br>
+    <button onclick="convertToSingleLine()">Convert</button><br><br>
+    
+    <textarea id="outputText" rows="10" placeholder="Single line output will appear here..."></textarea>
+</body>
+</html>
